@@ -47,8 +47,8 @@ public class DataBaseHelper {
 		} catch (SQLException e) {
 			System.out.println("Error de SQL " + e.getMessage());
 		}finally{
-			cerrarSentencia();
-			cerrarConexion();
+			//cerrarSentencia();
+			//cerrarConexion();
 		}
 		return filas;
 	}
