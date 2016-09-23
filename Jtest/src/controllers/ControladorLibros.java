@@ -56,5 +56,12 @@ public class ControladorLibros extends HttpServlet{
 			despachador = request.getRequestDispatcher("mostrarLibros.jsp");
 			despachador.forward(request, response);
 		}
+		else if(request.getServletContext().equals("/editarLibro.html")){
+			Libro libro=new Libro();
+			libro.setearDatos(request.getParameter("isbn"));
+			request.setAttribute("libro", libro);
+			despachador = request.getRequestDispatcher("editarLibro.jsp");
+			despachador.forward(request, response);
+		}
 	}
 }

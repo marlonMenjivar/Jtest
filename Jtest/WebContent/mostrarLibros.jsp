@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="dominio.Libro"%>
 <%@ page import="java.util.ArrayList"%>
 <html>
@@ -16,21 +17,15 @@
 			<th>Eliminar</th>
 			<th>Editar</th>
 		</tr>	
-	<%
-	//Libro libro=new Libro();
-	//ArrayList<Libro> lista=libro.getLista();
-	ArrayList<Libro> lista=(ArrayList<Libro>)request.getAttribute("listaDeLibros");
-	
-	for (Libro elemento:lista) {
-	%>
-	<tr>
-	<td><%=elemento.getIsbn()%></td>
-	<td><%=elemento.getTitulo()%></td>
-	<td><%=elemento.getCategoria()%></td>
-	<td><a href="eliminarLibro.html?isbn=<%=elemento.getIsbn()%>">Eliminar</a></td>
-	<td><a href="editarLibro.jsp?isbn=<%=elemento.getIsbn()%>">Editar</a>
-	<%} %>
-	</tr>
+		<c:forEach var="libro" items="${listaDeLibros}">
+			<tr>
+				<td>${libro.isbn}</td>
+				<td>${libro.titulo}</td>
+				<td>${libro.categoria}</td>
+				<td><a href="eliminarLibro.html?isbn=${libro.isbn}">Eliminar</a></td>
+				<td><a href="editarLibro.html?isbn=${libro.isbn}">Editar</a></td>
+			</tr>
+		</c:forEach>
 	</table>
 	<a href="FormularioInsertarLibro.jsp">Insertar Libro</a>
 </body>
