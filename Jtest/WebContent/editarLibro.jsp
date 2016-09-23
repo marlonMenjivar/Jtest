@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<h1>Formulario de edición</h1>
-		<form id=miformulario action="actualizarLibro.jsp">
+		<form id=miformulario action="actualizarLibro.html">
 			<fieldset>
 				<legend>Formulario alta</legend>
 				<p><label for="isbn">ISBN:</label>

@@ -23,8 +23,10 @@ public class DataBaseHelper {
 			filasAfectadas=sentencia.executeUpdate(consultaSQL);
 		}catch(ClassNotFoundException e){
 			System.out.println("Error driver" + e.getMessage());
+			throw new DataBaseException("Clase no encontrada",e);
 		}catch(SQLException e){
 			System.out.println("Error de SQL" + e.getMessage());
+			throw new DataBaseException("Error de SQL",e);
 		}finally{
 			cerrarSentencia();
 			cerrarConexion();

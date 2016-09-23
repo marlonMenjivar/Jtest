@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<h1>Formulario alta</h1>
-		<form id=miformulario action="insertarLibro.jsp">
+		<form id=miformulario action="insertarLibro.html">
 			<fieldset>
 				<legend>Formulario alta</legend>
 				<p><label for="isbn">ISBN:</label>

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import utilidades.DataBaseException;
 import utilidades.DataBaseHelper;
 
 public class Libro {
@@ -46,14 +47,20 @@ public class Libro {
 		db.modificarRegistro(query);
 	}
 	
-	public void setearDatos(String isbn) throws SQLException{
+	public void setearDatos(String isbn){
 		DataBaseHelper db=new DataBaseHelper();
 		String query="SELECT * from LIBROS where isbn='"+isbn+"'";
 		ResultSet rs=db.seleccionarRegistros(query);
-		rs.next();
-		setIsbn(isbn);
-		setCategoria(rs.getString("categoria"));
-		setTitulo(rs.getString("titulo"));
+		try {
+			rs.next();
+			setIsbn(isbn);
+			setCategoria(rs.getString("categoria"));
+			setTitulo(rs.getString("titulo"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error de SQL" + e.getMessage());
+			throw new DataBaseException("Error de SQL",e);
+		}
 	}
 	public void actualizarLibro(){
 		DataBaseHelper db=new DataBaseHelper();

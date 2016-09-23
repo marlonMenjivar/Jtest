@@ -17,8 +17,9 @@
 			<th>Editar</th>
 		</tr>	
 	<%
-	Libro libro=new Libro();
-	ArrayList<Libro> lista=libro.getLista();
+	//Libro libro=new Libro();
+	//ArrayList<Libro> lista=libro.getLista();
+	ArrayList<Libro> lista=(ArrayList<Libro>)request.getAttribute("listaDeLibros");
 	
 	for (Libro elemento:lista) {
 	%>
@@ -26,7 +27,7 @@
 	<td><%=elemento.getIsbn()%></td>
 	<td><%=elemento.getTitulo()%></td>
 	<td><%=elemento.getCategoria()%></td>
-	<td><a href="eliminarLibro.jsp?isbn=<%=elemento.getIsbn()%>">Eliminar</a></td>
+	<td><a href="eliminarLibro.html?isbn=<%=elemento.getIsbn()%>">Eliminar</a></td>
 	<td><a href="editarLibro.jsp?isbn=<%=elemento.getIsbn()%>">Editar</a>
 	<%} %>
 	</tr>
